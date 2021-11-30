@@ -10,9 +10,11 @@ class ShowUsers extends Component
 {
     public $showit;
 
+    public $role;
+
     public $edit;
 
-    public $Firstname, $Lastname, $phonenumber, $email, $address;
+    public $Firstname, $Lastname, $phonenumber, $email, $address, $role_id;
 
 
     protected function rules()
@@ -23,6 +25,7 @@ class ShowUsers extends Component
             'phonenumber' => 'min:1',
             'email' => 'min:1',
             'address' => 'min:1',
+            'role_id' => 'min:1',
         ];
     }
 
@@ -36,6 +39,9 @@ class ShowUsers extends Component
         $this->phonenumber= $this->showit->phonenumber;
         $this->email = $this->showit->email;
         $this->address = $this->showit->address;
+        $this->role_id = $this->showit->role_id;
+
+        $this->role = Role::with(['user'])->get();
 
     }
 
@@ -59,6 +65,8 @@ class ShowUsers extends Component
         $this->showit->phonenumber = $this->phonenumber;
         $this->showit->email = $this->email;
         $this->showit->address = $this->address;
+        $this->showit->role_id = $this->role_id;
+
 
 
         $this->showit->save();

@@ -81,6 +81,12 @@
 
                 </div>
 
+                <select wire:model="role_id" name="role_id" class="form-control" required>
+                    @foreach ($role as $goal)
+                        <option value="{{ $goal->id }}">{{ $goal->name }}</option>
+                    @endforeach
+                </select>
+
             </form>
         </td>
         <td class="px-6 py-4 text-right text-sm font-medium align-top bg-yellow-50">
